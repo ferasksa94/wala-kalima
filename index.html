@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0f172a" />
+    <title>ولا كلمة | لعبة الحفلات</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>ولا كلمة</h1>
+      <p>لعبة الحفلات العربية — عجلة اختيار + نقاط + مؤقت</p>
+    </header>
+
+    <main class="container">
+      <section class="card" aria-labelledby="wheel-title">
+        <div class="section-head">
+          <h2 id="wheel-title">عجلة الاختيار</h2>
+          <label class="switch-row">
+            <span>الصوت</span>
+            <button id="soundToggle" class="toggle-btn" aria-pressed="true">مُفعل</button>
+          </label>
+        </div>
+
+        <div class="wheel-wrapper">
+          <div class="pointer" aria-hidden="true"></div>
+          <div id="wheel" class="wheel" role="img" aria-label="عجلة اختيار العناصر"></div>
+        </div>
+
+        <div class="wheel-actions">
+          <button id="spinBtn" class="btn primary">لف العجلة</button>
+          <label class="checkbox-row">
+            <input type="checkbox" id="noRepeatCycle" />
+            <span>بدون تكرار حتى انتهاء كل العناصر</span>
+          </label>
+        </div>
+
+        <p id="result" class="result" aria-live="polite">النتيجة ستظهر هنا</p>
+      </section>
+
+      <section class="card" aria-labelledby="score-title">
+        <h2 id="score-title">النقاط</h2>
+
+        <div class="teams">
+          <article class="team" data-team="A">
+            <label>
+              <span>اسم الفريق أ</span>
+              <input id="teamAName" type="text" maxlength="30" value="الفريق أ" />
+            </label>
+            <p class="score" id="teamAScore">0</p>
+            <div class="score-buttons">
+              <button data-team="A" data-delta="1" class="btn">+1</button>
+              <button data-team="A" data-delta="5" class="btn">+5</button>
+              <button data-team="A" data-delta="-1" class="btn danger">-1</button>
+            </div>
+          </article>
+
+          <article class="team" data-team="B">
+            <label>
+              <span>اسم الفريق ب</span>
+              <input id="teamBName" type="text" maxlength="30" value="الفريق ب" />
+            </label>
+            <p class="score" id="teamBScore">0</p>
+            <div class="score-buttons">
+              <button data-team="B" data-delta="1" class="btn">+1</button>
+              <button data-team="B" data-delta="5" class="btn">+5</button>
+              <button data-team="B" data-delta="-1" class="btn danger">-1</button>
+            </div>
+          </article>
+        </div>
+
+        <button id="resetScores" class="btn warning full-width">تصفير النقاط</button>
+      </section>
+
+      <section class="card" aria-labelledby="list-title">
+        <h2 id="list-title">إدارة القائمة</h2>
+
+        <label for="itemInput">أضف عناصر (سطر جديد أو فاصلة ,)</label>
+        <textarea id="itemInput" rows="4" placeholder="مثال: باب الحارة, طاش ما طاش\nعمر، سكة سفر"></textarea>
+
+        <div class="row-actions">
+          <button id="addItemsBtn" class="btn primary">إضافة</button>
+          <button id="clearItemsBtn" class="btn danger">حذف الكل</button>
+        </div>
+
+        <ul id="itemsList" class="items-list" aria-live="polite"></ul>
+
+        <h3>استيراد / تصدير JSON</h3>
+        <textarea id="jsonBox" rows="4" placeholder='["اسم عنصر","عنصر آخر"]'></textarea>
+        <div class="row-actions">
+          <button id="exportJsonBtn" class="btn">تصدير إلى الصندوق</button>
+          <button id="importJsonBtn" class="btn">استيراد من الصندوق</button>
+        </div>
+      </section>
+
+      <section class="card" aria-labelledby="timer-title">
+        <h2 id="timer-title">المؤقت</h2>
+        <p id="timerDisplay" class="timer" aria-live="polite">02:00</p>
+
+        <div class="row-actions">
+          <button id="startTimer" class="btn primary">بدء</button>
+          <button id="pauseTimer" class="btn">إيقاف مؤقت</button>
+          <button id="resetTimer" class="btn warning">إعادة ضبط</button>
+        </div>
+
+        <p id="timerStatus" class="timer-status">جاهز للبدء</p>
+      </section>
+    </main>
+
+    <footer class="app-footer">صُممت للعمل على الهاتف وبشكل كامل على GitHub Pages.</footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
